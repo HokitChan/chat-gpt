@@ -58,8 +58,8 @@ const FullWidthTextField = forwardRef(({onValueChange, isTyping}: Props, ref) =>
                 sx={buttonStyles}
             >
                 {isTyping ? (
-                    <svg stroke="white" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round"
-                         stroke-linejoin="round" className="animate-spin text-center" height="16" width="16"
+                    <svg stroke="white" fill="none"  viewBox="0 0 24 24"
+                         className="animate-spin text-center" height="16" width="16"
                          xmlns="http://www.w3.org/2000/svg">
                         <line x1="12" y1="2" x2="12" y2="6"></line>
                         <line x1="12" y1="18" x2="12" y2="22"></line>

@@ -1,7 +1,6 @@
 import {useState, useRef} from 'react';
 import './App.css';
 import FullWidthTextField from "./components/FullWidthTextField";
-import Container from '@mui/material/Container';
 
 interface Message {
     role: string;
