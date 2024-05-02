@@ -40,13 +40,7 @@ const FullWidthTextField = forwardRef(({onValueChange, isTyping}: Props, ref) =>
         }
     }
     return (
-        <Box
-            sx={{
-                maxWidth: "670px",
-                position: "relative",
-                paddingBottom:"32px"
-            }}
-        >
+        <Box>
             <TextField
                 fullWidth
                 placeholder="Message ChatGPT…"
@@ -64,10 +58,17 @@ const FullWidthTextField = forwardRef(({onValueChange, isTyping}: Props, ref) =>
                 sx={buttonStyles}
             >
                 {isTyping ? (
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"
-                         className="h-2 w-2 text-token-text-primary" height="16" width="16">
-                        <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2z"
-                              strokeWidth="0"></path>
+                    <svg stroke="white" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round"
+                         stroke-linejoin="round" className="animate-spin text-center" height="16" width="16"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <line x1="12" y1="2" x2="12" y2="6"></line>
+                        <line x1="12" y1="18" x2="12" y2="22"></line>
+                        <line x1="4.93" y1="4.93" x2="7.76" y2="7.76"></line>
+                        <line x1="16.24" y1="16.24" x2="19.07" y2="19.07"></line>
+                        <line x1="2" y1="12" x2="6" y2="12"></line>
+                        <line x1="18" y1="12" x2="22" y2="12"></line>
+                        <line x1="4.93" y1="19.07" x2="7.76" y2="16.24"></line>
+                        <line x1="16.24" y1="7.76" x2="19.07" y2="4.93"></line>
                     </svg>
                 ) : (
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="text-white">
@@ -82,7 +83,6 @@ const FullWidthTextField = forwardRef(({onValueChange, isTyping}: Props, ref) =>
 
 const textFieldStyles = {
     width: "100%",
-    maxWidth: "670px",
     height: "52px",
     borderRadius: "16px",
     ".MuiInputBase-root": {

@@ -1,8 +1,6 @@
-import {useState, Fragment, useRef} from 'react';
+import {useState, useRef} from 'react';
 import './App.css';
 import FullWidthTextField from "./components/FullWidthTextField";
-import Box from '@mui/material/Box';
-import Grid from '@mui/material/Grid';
 import Container from '@mui/material/Container';
 
 interface Message {
@@ -26,6 +24,46 @@ function App() {
         {
             "model": "openai/gpt-3.5-turbo",
             "messages": [
+                {
+                    "role": "user",
+                    "content": "我是谁"
+                },
+                {
+                    "role": "assistant",
+                    "content": "您是向我提问的用户。您可能是一个人类用户，也可能是一个智能机器人用户。无论您是谁，我都很高兴能够为您提供帮助和服务。如果您有任何疑问或需要帮助，请随时告诉我。"
+                },
+                {
+                    "role": "user",
+                    "content": "我是谁"
+                },
+                {
+                    "role": "assistant",
+                    "content": "您是向我提问的用户。您可能是一个人类用户，也可能是一个智能机器人用户。无论您是谁，我都很高兴能够为您提供帮助和服务。如果您有任何疑问或需要帮助，请随时告诉我。"
+                },
+                {
+                    "role": "user",
+                    "content": "我是谁"
+                },
+                {
+                    "role": "assistant",
+                    "content": "您是向我提问的用户。您可能是一个人类用户，也可能是一个智能机器人用户。无论您是谁，我都很高兴能够为您提供帮助和服务。如果您有任何疑问或需要帮助，请随时告诉我。"
+                },
+                {
+                    "role": "user",
+                    "content": "我是谁"
+                },
+                {
+                    "role": "assistant",
+                    "content": "您是向我提问的用户。您可能是一个人类用户，也可能是一个智能机器人用户。无论您是谁，我都很高兴能够为您提供帮助和服务。如果您有任何疑问或需要帮助，请随时告诉我。"
+                },
+                {
+                    "role": "user",
+                    "content": "我是谁"
+                },
+                {
+                    "role": "assistant",
+                    "content": "您是向我提问的用户。您可能是一个人类用户，也可能是一个智能机器人用户。无论您是谁，我都很高兴能够为您提供帮助和服务。如果您有任何疑问或需要帮助，请随时告诉我。"
+                },
                 {
                     "role": "user",
                     "content": "我是谁"
@@ -123,13 +161,13 @@ function App() {
     const list = defaultParams.messages.map((item, index) => (
         <div key={index} className="item">
             {item.role === "user" ? (<div className="avatar">
-                <div className="avatarWrap">
+                <div className="avatar-wrap">
                     <img alt="User" referrerPolicy="no-referrer" loading="lazy" width="24" height="24" decoding="async"
                          src="https://lh3.googleusercontent.com/a/AGNmyxZ9M3HtcT3EoQC01SmTjLeddK15HtLp0kEoS4sAjg=s96-c"/>
                 </div>
                 <span>You</span>
             </div>) : (<div className="avatar">
-                <div className="avatarWrap">
+                <div className="avatar-wrap">
                     <svg width="16" height="16" viewBox="0 0 41 41" fill="none"
                          className="icon-sm" role="img">
                         <text x="-9999" y="-9999">ChatGPT</text>
@@ -140,19 +178,20 @@ function App() {
                 </div>
                 <span>ChatGPT</span>
             </div>)}
-            <div className="innerText">{item.content}</div>
+            <div className="inner-text">{item.content}</div>
         </div>)
     );
     return (
-        <Container maxWidth="md">
             <div className="wrap">
                 <div className="content">{list}</div>
-                <FullWidthTextField
-                    ref={childRef}
-                    onValueChange={handleValueFromChild}
-                    isTyping={isTyping}/>
+                <div className="bottom-bar">
+                    <FullWidthTextField
+                        ref={childRef}
+                        onValueChange={handleValueFromChild}
+                        isTyping={isTyping}/>
+                </div>
+
             </div>
-        </Container>
     );
 }
 

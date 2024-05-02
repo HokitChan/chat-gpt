@@ -8,12 +8,14 @@ html {
     flex-direction: column;
     justify-content: space-between;
     align-content: center;
-    max-width: 670px;
-    min-height: 100vh;
+    max-width: 766px;
 
     .content {
+        max-width: 766px;
         padding: 24px;
         font-size: 16px;
+        overflow-y: scroll;
+        height: calc(100vh - 134px);
 
         .item {
             padding: 16px 0;
@@ -21,7 +23,7 @@ html {
             .avatar {
                 display: flex;
 
-                .avatarWrap {
+                .avatar-wrap {
                     width: 24px;
                     height: 24px;
                     display: flex;
@@ -39,19 +41,36 @@ html {
                     font-weight: 600;
                 }
             }
-            .innerText{
+
+            .inner-text {
                 line-height: 24px;
                 margin-left: 36px;
             }
         }
     }
-}
 
-.position-relative {
-    position: relative;
+    .bottom-bar {
+        position: relative;
+        padding-bottom: 34px;
+        background-color: white;
+
+    }
 }
 
 .text-white {
     color: white;
 }
+
+.animate-spin {
+    -webkit-animation: spin 1s linear infinite;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        -webkit-transform: rotate(1turn);
+        transform: rotate(1turn)
+    }
+}
+
 
