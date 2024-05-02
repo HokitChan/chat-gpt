@@ -1,3 +1,51 @@
+html {
+    height: 100vh;
+}
+
+.wrap {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: center;
+    max-width: 670px;
+    min-height: 100vh;
+
+    .content {
+        padding: 24px;
+        font-size: 16px;
+
+        .item {
+            padding: 16px 0;
+
+            .avatar {
+                display: flex;
+
+                .avatarWrap {
+                    width: 24px;
+                    height: 24px;
+                    display: flex;
+                    align-content: center;
+                    justify-content: center;
+                    flex-wrap: wrap;
+                    box-sizing: border-box;
+                    border: 1px solid #e3e3e3;
+                    border-radius: 50%;
+                    margin-right: 12px;
+                    overflow: hidden;
+                }
+
+                span {
+                    font-weight: 600;
+                }
+            }
+            .innerText{
+                line-height: 24px;
+                margin-left: 36px;
+            }
+        }
+    }
+}
 
 .position-relative {
     position: relative;

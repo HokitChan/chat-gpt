@@ -1,9 +1,7 @@
-// FullWidthTextField.tsx
-import * as React from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import {Button} from "@mui/material";
-import {useState, forwardRef, useImperativeHandle} from 'react';
+import {useState, forwardRef, useImperativeHandle, ChangeEvent, KeyboardEvent} from 'react';
 
 interface Props {
     onValueChange: (value: string) => void,
@@ -21,7 +19,7 @@ const FullWidthTextField = forwardRef(({onValueChange, isTyping}: Props, ref) =>
         setState(true);
     };
 
-    const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
         console.log(e.target.value);
         setState(e.target.value === '');
         setValue(e.target.value);
@@ -32,43 +30,52 @@ const FullWidthTextField = forwardRef(({onValueChange, isTyping}: Props, ref) =>
         setBtnState: (value: boolean) => setState(value),
     }));
 
+    const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
+        // 检查按下的键是否为回车键（键码为13）
+        if (event.key === 'Enter') {
+            // 阻止默认行为，避免触发表单的默认提交行为
+            event.preventDefault();
+            // 执行按钮点击事件
+            handleClick();
+        }
+    }
     return (
         <Box
             sx={{
-                width: "100%",
-                maxWidth: '670px',
+                maxWidth: "670px",
+                position: "relative",
+                paddingBottom:"32px"
             }}
         >
-            <div className="position-relative">
-                <TextField
-                    fullWidth
-                    placeholder="Message ChatGPT…"
-                    id="fullWidth"
-                    disabled={isTyping}
-                    value={value}
-                    onChange={handleInput}
-                    sx={textFieldStyles}
-                />
-                <Button
-                    disabled={state || isTyping}
-                    onClick={handleClick}
-                    variant="contained"
-                    sx={buttonStyles}
-                >
-                    {isTyping ? (
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"
-                             className="h-2 w-2 text-token-text-primary" height="16" width="16">
-                            <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2z"
-                                  strokeWidth="0"></path>
-                        </svg>
-                    ) : (
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="text-white">
-                            <path d="M7 11L12 6L17 11M12 18V7" stroke="currentColor" strokeWidth="2"
-                                  strokeLinecap="round" strokeLinejoin="round"></path>
-                        </svg>
-                    )}
-                </Button>
-            </div>
+            <TextField
+                fullWidth
+                placeholder="Message ChatGPT…"
+                id="fullWidth"
+                disabled={isTyping}
+                value={value}
+                onChange={handleInput}
+                onKeyDown={handleKeyDown}
+                sx={textFieldStyles}
+            />
+            <Button
+                disabled={state || isTyping}
+                onClick={handleClick}
+                variant="contained"
+                sx={buttonStyles}
+            >
+                {isTyping ? (
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"
+                         className="h-2 w-2 text-token-text-primary" height="16" width="16">
+                        <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2z"
+                              strokeWidth="0"></path>
+                    </svg>
+                ) : (
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="text-white">
+                        <path d="M7 11L12 6L17 11M12 18V7" stroke="currentColor" strokeWidth="2"
+                              strokeLinecap="round" strokeLinejoin="round"></path>
+                    </svg>
+                )}
+            </Button>
         </Box>
     );
 });
