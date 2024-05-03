@@ -67,6 +67,9 @@ html {
             .inner-text {
                 line-height: 24px;
                 margin-left: 36px;
+                white-space: pre-wrap; /* 保留空白符序列，但是当到达容器边界时进行换行 */
+                word-wrap: break-word; /* 允许在长单词或URL内部换行 */
+                word-break: break-all; /* 允许在任意字符间换行，适用于某些亚洲语言 */
             }
         }
     }
