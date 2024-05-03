@@ -1,13 +1,11 @@
 import avatar from "../assets/images/avatar.jpg";
-import {DefaultParamsInterface, MessageInterFace} from "../types/data"
+import {MessageInterFace} from "../types/data"
 
 export interface Props {
-    defaultParams: DefaultParamsInterface
+    messages: MessageInterFace[]
 }
 
-function ContentComponent({defaultParams}: Props) {
-    const {messages} = defaultParams;
-
+function ContentComponent({messages}: Props) {
     if (!messages || messages.length === 0) {
         return (<div className="display-flex client-height flex-column">
             <div className="avatar-wrap wh48 wh32-svg display-flex">
@@ -22,8 +20,8 @@ function ContentComponent({defaultParams}: Props) {
             <div className="help">How can I help you today?</div>
         </div>);
     }
-    const list = messages.map((item: MessageInterFace, index: number) => (
-        <div className="item">
+    const list = messages.map((item: MessageInterFace) => (
+        <div key={item.id} className="item">
             {item.role === "user" ? (<div className="avatar">
                 <div className="avatar-wrap wh24-svg display-flex">
                     <img alt="User" loading="lazy" decoding="async"

@@ -14,7 +14,6 @@ const InputComponent = forwardRef(({onValueChange, isTyping}: Props, ref) => {
     const [value, setValue] = useState<string>('');
 
     const handleClick = () => {
-        console.log('子组件传送：' + value);
         onValueChange(value);
         setState(true);
     };
