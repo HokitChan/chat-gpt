@@ -7,64 +7,64 @@ import ContentComponent from "./components/ContentComponent"
 function App() {
     const [isTyping, setTyping] = useState<boolean>(false);
     const [defaultParams, setParams] = useState<DefaultParamsInterface>(
-        /*        {
-                // "model": "mistralai/mistral-7b-instruct:free",
-                model: "openai/gpt-3.5-turbo",
-                messages: [],
-            }*/
         {
-            "model": "openai/gpt-3.5-turbo",
-            "messages": [
-                {
-                    "role": "user",
-                    "content": "我是谁"
-                },
-                {
-                    "role": "assistant",
-                    "content": "您是向我提问的用户。您可能是一个人类用户，也可能是一个智能机器人用户。无论您是谁，我都很高兴能够为您提供帮助和服务。如果您有任何疑问或需要帮助，请随时告诉我。"
-                },
-                {
-                    "role": "user",
-                    "content": "我是谁"
-                },
-                {
-                    "role": "assistant",
-                    "content": "您是向我提问的用户。您可能是一个人类用户，也可能是一个智能机器人用户。无论您是谁，我都很高兴能够为您提供帮助和服务。如果您有任何疑问或需要帮助，请随时告诉我。"
-                },
-                {
-                    "role": "user",
-                    "content": "我是谁"
-                },
-                {
-                    "role": "assistant",
-                    "content": "您是向我提问的用户。您可能是一个人类用户，也可能是一个智能机器人用户。无论您是谁，我都很高兴能够为您提供帮助和服务。如果您有任何疑问或需要帮助，请随时告诉我。"
-                },
-                {
-                    "role": "user",
-                    "content": "我是谁"
-                },
-                {
-                    "role": "assistant",
-                    "content": "您是向我提问的用户。您可能是一个人类用户，也可能是一个智能机器人用户。无论您是谁，我都很高兴能够为您提供帮助和服务。如果您有任何疑问或需要帮助，请随时告诉我。"
-                },
-                {
-                    "role": "user",
-                    "content": "我是谁"
-                },
-                {
-                    "role": "assistant",
-                    "content": "您是向我提问的用户。您可能是一个人类用户，也可能是一个智能机器人用户。无论您是谁，我都很高兴能够为您提供帮助和服务。如果您有任何疑问或需要帮助，请随时告诉我。"
-                },
-                {
-                    "role": "user",
-                    "content": "我是谁"
-                },
-                {
-                    "role": "assistant",
-                    "content": "您是向我提问的用户。您可能是一个人类用户，也可能是一个智能机器人用户。无论您是谁，我都很高兴能够为您提供帮助和服务。如果您有任何疑问或需要帮助，请随时告诉我。"
-                }
-            ]
+            // "model": "mistralai/mistral-7b-instruct:free",
+            model: "openai/gpt-3.5-turbo",
+            messages: [],
         }
+        /*       {
+                   "model": "openai/gpt-3.5-turbo",
+                   "messages": [
+                       {
+                           "role": "user",
+                           "content": "我是谁"
+                       },
+                       {
+                           "role": "assistant",
+                           "content": "您是向我提问的用户。您可能是一个人类用户，也可能是一个智能机器人用户。无论您是谁，我都很高兴能够为您提供帮助和服务。如果您有任何疑问或需要帮助，请随时告诉我。"
+                       },
+                       {
+                           "role": "user",
+                           "content": "我是谁"
+                       },
+                       {
+                           "role": "assistant",
+                           "content": "您是向我提问的用户。您可能是一个人类用户，也可能是一个智能机器人用户。无论您是谁，我都很高兴能够为您提供帮助和服务。如果您有任何疑问或需要帮助，请随时告诉我。"
+                       },
+                       {
+                           "role": "user",
+                           "content": "我是谁"
+                       },
+                       {
+                           "role": "assistant",
+                           "content": "您是向我提问的用户。您可能是一个人类用户，也可能是一个智能机器人用户。无论您是谁，我都很高兴能够为您提供帮助和服务。如果您有任何疑问或需要帮助，请随时告诉我。"
+                       },
+                       {
+                           "role": "user",
+                           "content": "我是谁"
+                       },
+                       {
+                           "role": "assistant",
+                           "content": "您是向我提问的用户。您可能是一个人类用户，也可能是一个智能机器人用户。无论您是谁，我都很高兴能够为您提供帮助和服务。如果您有任何疑问或需要帮助，请随时告诉我。"
+                       },
+                       {
+                           "role": "user",
+                           "content": "我是谁"
+                       },
+                       {
+                           "role": "assistant",
+                           "content": "您是向我提问的用户。您可能是一个人类用户，也可能是一个智能机器人用户。无论您是谁，我都很高兴能够为您提供帮助和服务。如果您有任何疑问或需要帮助，请随时告诉我。"
+                       },
+                       {
+                           "role": "user",
+                           "content": "我是谁"
+                       },
+                       {
+                           "role": "assistant",
+                           "content": "您是向我提问的用户。您可能是一个人类用户，也可能是一个智能机器人用户。无论您是谁，我都很高兴能够为您提供帮助和服务。如果您有任何疑问或需要帮助，请随时告诉我。"
+                       }
+                   ]
+               }*/
     );
     const getParams = (value: string) => {
         const params: DefaultParamsInterface = defaultParams
@@ -87,11 +87,6 @@ function App() {
         }
     };
     const fetchData = () => {
-        // const params = {
-        //     // "model": "mistralai/mistral-7b-instruct:free",
-        //     model: "openai/gpt-3.5-turbo",
-        //     messages: [{role: "user", content: "生命的意义是什么?"}],
-        // };
         // let OPENROUTER_API_KEY = "";
         const OPENROUTER_API_KEY = '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';
         // const OPENROUTER_API_KEYs = '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';
@@ -132,31 +127,16 @@ function App() {
     const handleValueFromChild = (value: string) => {
         console.log("父组件接收到" + value);
         getParams(value)
-        /*        let params = {
-                    model: "openai/gpt-3.5-turbo",
-                    "messages": [{
-                        "role": "user",
-                        "content": "11111 第一条数据你是谁"
-                    }, {
-                        "role": "assistant",
-                        "content": " 您好！我是ChatGPT，一款基于GPT-4的AI"
-                    }, {
-                        "role": "user",
-                        "content": "2222222 今天天气怎么样"
-                    }],
-                }*/
         setTyping(true)
         fetchData();
     };
     return (
         <div className="wrap">
             <ContentComponent defaultParams={defaultParams}/>
-            <div className="bottom-bar">
-                <InputComponent
-                    ref={childRef}
-                    onValueChange={handleValueFromChild}
-                    isTyping={isTyping}/>
-            </div>
+            <InputComponent
+                ref={childRef}
+                onValueChange={handleValueFromChild}
+                isTyping={isTyping}/>
         </div>
     );
 }
