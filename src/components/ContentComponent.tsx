@@ -1,7 +1,7 @@
 import avatar from "../assets/images/avatar.jpg";
 import {MessageInterFace} from "../types/data"
 
-export interface Props {
+interface Props {
     messages: MessageInterFace[]
 }
 

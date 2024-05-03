@@ -3,7 +3,7 @@ import TextField from '@mui/material/TextField';
 import {Button} from "@mui/material";
 import {useState, forwardRef, useImperativeHandle, ChangeEvent, KeyboardEvent} from 'react';
 
-export interface Props {
+interface Props {
     onValueChange: (value: string) => void,
     isTyping: boolean,
 }
