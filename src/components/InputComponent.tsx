@@ -3,12 +3,11 @@ import TextField from '@mui/material/TextField';
 import {Button} from "@mui/material";
 import {useState, forwardRef, useImperativeHandle, ChangeEvent, KeyboardEvent} from 'react';
 
-interface Props {
+export interface Props {
     onValueChange: (value: string) => void,
     isTyping: boolean,
 }
-
-const FullWidthTextField = forwardRef(({onValueChange, isTyping}: Props, ref) => {
+const InputComponent = forwardRef(({onValueChange, isTyping}: Props, ref) => {
 
     const [state, setState] = useState<boolean>(true);
     const [value, setValue] = useState<string>('');
@@ -58,7 +57,7 @@ const FullWidthTextField = forwardRef(({onValueChange, isTyping}: Props, ref) =>
                 sx={buttonStyles}
             >
                 {isTyping ? (
-                    <svg stroke="white" fill="none"  viewBox="0 0 24 24"
+                    <svg stroke="white" fill="none" viewBox="0 0 24 24"
                          className="animate-spin text-center" height="16" width="16"
                          xmlns="http://www.w3.org/2000/svg">
                         <line x1="12" y1="2" x2="12" y2="6"></line>
@@ -117,4 +116,4 @@ const buttonStyles = {
     }
 };
 
-export default FullWidthTextField;
+export default InputComponent;
