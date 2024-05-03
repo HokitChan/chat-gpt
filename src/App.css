@@ -2,55 +2,90 @@ html {
     height: 100vh;
 }
 
+.display-flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.client-height {
+    height: calc(100vh - 134px);
+}
+
+.wh48 {
+    width: 48px;
+    height: 48px;
+}
+
+.wh32-svg {
+    svg {
+        width: 32px;
+        height: 32px;
+    }
+}
+
+.wh24-svg {
+    width: 24px;
+    height: 24px;
+
+    svg {
+        width: 24px;
+        height: 24px;
+    }
+}
+
 .wrap {
     margin: 0 auto;
     display: flex;
-    flex-direction: column;
     justify-content: space-between;
     align-content: center;
     max-width: 766px;
+
+    .help {
+        font-size: 24px;
+        font-weight: 500;
+        margin-top: 12px;
+    }
 
     .content {
         max-width: 766px;
         padding: 24px;
         font-size: 16px;
-        overflow-y: scroll;
-        height: calc(100vh - 134px);
+        overflow-y: auto;
 
         .item {
             padding: 16px 0;
 
-            .avatar {
-                display: flex;
-
-                .avatar-wrap {
-                    width: 24px;
-                    height: 24px;
-                    display: flex;
-                    align-content: center;
-                    justify-content: center;
-                    flex-wrap: wrap;
-                    box-sizing: border-box;
-                    border: 1px solid #e3e3e3;
-                    border-radius: 50%;
-                    margin-right: 12px;
-                    overflow: hidden;
-
-                    img {
-                        width: 100%;
-                        height: 100%;
-                    }
-                }
-
-                span {
-                    font-weight: 600;
-                }
+            span {
+                font-weight: 600;
             }
 
             .inner-text {
                 line-height: 24px;
                 margin-left: 36px;
             }
+        }
+    }
+
+    .avatar {
+        display: flex;
+    }
+
+    .avatar-wrap {
+        flex-wrap: wrap;
+        box-sizing: border-box;
+        border: 1px solid #e3e3e3;
+        border-radius: 50%;
+        margin-right: 12px;
+        overflow: hidden;
+
+        img {
+            width: 100%;
+            height: 100%;
         }
     }
 

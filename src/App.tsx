@@ -3,9 +3,11 @@ import './App.css';
 import InputComponent from "./components/InputComponent";
 import {DefaultParamsInterface,} from "./types/data"
 import ContentComponent from "./components/ContentComponent"
+import DialogComponent from "./components/DialogComponent";
 
 function App() {
     const [isTyping, setTyping] = useState<boolean>(false);
+    const [apiKey, setApiKey] = useState("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");
     const [defaultParams, setParams] = useState<DefaultParamsInterface>(
         {
             // "model": "mistralai/mistral-7b-instruct:free",
@@ -87,15 +89,10 @@ function App() {
         }
     };
     const fetchData = () => {
-        // let OPENROUTER_API_KEY = "";
-        const OPENROUTER_API_KEY = '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';
-        // const OPENROUTER_API_KEYs = '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';
-        // const OPENROUTER_API_KEY = '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';
-
         fetch("https://openrouter.ai/api/v1/chat/completions", {
             method: "POST",
             headers: {
-                "Authorization": `Bearer ${OPENROUTER_API_KEY}`,
+                "Authorization": `Bearer ${apiKey}`,
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(defaultParams)
@@ -130,13 +127,21 @@ function App() {
         setTyping(true)
         fetchData();
     };
+
+    const handleKeyChange = (value: string) => {
+        setApiKey(value)
+    }
+
     return (
-        <div className="wrap">
-            <ContentComponent defaultParams={defaultParams}/>
+        <div className="wrap flex-column">
+            <ContentComponent
+                defaultParams={defaultParams}/>
             <InputComponent
                 ref={childRef}
                 onValueChange={handleValueFromChild}
                 isTyping={isTyping}/>
+            <DialogComponent
+                onKeyChange={handleKeyChange}/>
         </div>
     );
 }
