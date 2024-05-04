@@ -10,23 +10,19 @@ interface Props {
 
 const InputComponent = forwardRef(({onValueChange, isTyping}: Props, ref) => {
 
-    const [state, setState] = useState<boolean>(true);
     const [value, setValue] = useState<string>('');
 
     const handleClick = () => {
         onValueChange(value);
-        setState(true);
     };
 
     const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
         console.log(e.target.value);
-        setState(e.target.value === '');
         setValue(e.target.value);
     };
 
     useImperativeHandle(ref, () => ({
         clearValue: () => setValue(''),
-        setBtnState: (value: boolean) => setState(value),
     }));
 
     const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
@@ -52,7 +48,7 @@ const InputComponent = forwardRef(({onValueChange, isTyping}: Props, ref) => {
                     sx={textFieldStyles}
                 />
                 <Button
-                    disabled={state || isTyping}
+                    disabled={value==="" || isTyping}
                     onClick={handleClick}
                     variant="contained"
                     sx={buttonStyles}

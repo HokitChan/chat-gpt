@@ -29,12 +29,6 @@ function App() {
             childRef.current.clearValue();
         }
     };
-    const setBtnState = (value: boolean) => {
-        // 调用子组件暴露的 setBtnState 方法
-        if (childRef.current) {
-            childRef.current.setBtnState(value);
-        }
-    };
     const fetchData = () => {
         const messagesWithoutId: MessageInterFace[] = messages.map(message => {
             const {id, ...rest} = message;
@@ -54,7 +48,6 @@ function App() {
             .then(response => {
                 console.log(response);
                 if (!response.ok) {
-                    setBtnState(false)
                     setErrorMessage("请求失败")
                     throw new Error('请求失败');
                 }
@@ -64,14 +57,12 @@ function App() {
                 console.log(data);
                 const params = messages
                 if (!data.error) {//Todo
-                    setBtnState(false)
                     clearChildData()
                     params.push({...data.choices[0].message, id: data.id})
                     setMessages(params)
                 } else {
                     console.log(JSON.parse(data.error.message));
                     setErrorMessage(JSON.parse(data.error.message).error.message)
-                    setBtnState(false)
                     /*           params.push({
                                    role: "assistant",
                                    content: JSON.parse(data.error.message).error.message,
@@ -80,7 +71,6 @@ function App() {
                 }
             })
             .catch(error => {
-                setBtnState(false)
                 setErrorMessage("请求失败,请检查网络连接！")
                 console.error('There was an error!', error);
                 // 处理请求失败的逻辑
