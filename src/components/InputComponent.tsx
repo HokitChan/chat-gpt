@@ -7,22 +7,26 @@ interface Props {
 }
 
 const InputComponent = forwardRef(({onValueChange, isSending}: Props, ref) => {
-
+    // 输入框的值
     const [value, setValue] = useState<string>('');
 
+    // 处理按钮点击事件
     const handleClick = () => {
         onValueChange(value);
     };
 
+    //接收输入框的值
     const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
         console.log(e.target.value);
         setValue(e.target.value);
     };
 
+    // 暴露给父组件的清空方法
     useImperativeHandle(ref, () => ({
         clearValue: () => setValue(''),
     }));
 
+    //绑定回车键
     const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
         // 检查按下的键是否为回车键（键码为13）
         if (event.key === 'Enter') {
@@ -75,7 +79,7 @@ const InputComponent = forwardRef(({onValueChange, isSending}: Props, ref) => {
         </div>
     );
 });
-
+//样式
 const textFieldStyles = {
     width: "100%",
     height: "52px",

@@ -1,22 +1,25 @@
 import avatar from "../assets/images/avatar.jpg";
 import {MessageInterFace} from "../types/data"
-import React, { useEffect, useRef } from 'react';
+import React, {useEffect, useRef} from 'react';
+
 interface Props {
     messages: MessageInterFace[]
 }
 
 function ContentComponent({messages}: Props) {
-        const messagesEndRef = useRef<HTMLDivElement>(null);
+    const messagesEndRef = useRef<HTMLDivElement>(null);
 
-        // 每当 messages 更新时，滚动到底部
-        useEffect(() => {
-            scrollToBottom();
-        });
+    // 每当 messages 更新时，滚动到底部
+    useEffect(() => {
+        scrollToBottom();
+    });
 
-        // 滚动到底部的函数
-        const scrollToBottom = () => {
-            messagesEndRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' });
-        };
+    // 滚动到底部的函数
+    const scrollToBottom = () => {
+        messagesEndRef.current?.scrollIntoView({behavior: 'smooth', block: 'end'});
+    };
+
+    //无数据渲染
     if (!messages?.length) {
         return (<div className="display-flex client-height flex-column">
             <div className="avatar-wrap wh48 wh32-svg display-flex">
@@ -31,7 +34,7 @@ function ContentComponent({messages}: Props) {
             <div className="help">How can I help you today?</div>
         </div>);
     }
-
+    //渲染对话内容
     const list = messages.map((item: MessageInterFace) => (
         <div key={item.id} className="item" ref={messagesEndRef}>
             {item.role === "user" ? (<div className="avatar">

@@ -7,8 +7,10 @@ interface Props {
 }
 
 const CustomizedSnackbars = forwardRef(({errorMessage}: Props, ref) => {
+    //错误提示状态
     const [open, setOpen] = useState(false);
 
+    //打开错误提示
     const handleClick = () => {
         setOpen(true);
     };
@@ -19,9 +21,12 @@ const CustomizedSnackbars = forwardRef(({errorMessage}: Props, ref) => {
         }
         setOpen(false);
     };
+
+    //暴露给父组件打开的方法
     useImperativeHandle(ref, () => ({
         handleOpen: () => handleClick(),
     }));
+
     return (
         <div>
             <Snackbar anchorOrigin={{

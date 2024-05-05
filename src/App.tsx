@@ -7,17 +7,31 @@ import DialogComponent from "./components/DialogComponent";
 import CustomizedSnackbars from "./components/CustomizedSnackbars"
 
 function App() {
+    // 默认的apiKey
     const defaultKey = "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"
+    // 是否正在发送请求
     const [isSending, setSending] = useState<boolean>(false);
+    // apiKey
     const [apiKey, setApiKey] = useState(defaultKey);
+    // 对话内容
     const [messages, setMessages] = useState<MessageInterFace[]>([]);
+    // 错误提示
     const [errorMessage, setErrorMessage] = useState("")
-    const childRef = useRef<any>(null);
+
+    // 错误提示的ref
     const snackbarsRef = useRef<any>(null);
+    const openToast = (message: string) => {
+        setErrorMessage(message)
+        snackbarsRef.current?.handleOpen();
+    }
+
+    //清空输入框
+    const childRef = useRef<any>(null);
     const clearChildData = () => {
-        // 调用子组件暴露的 clearValue 方法
         childRef.current?.clearValue();
     };
+
+    //发起请求
     const fetchData = (value: string) => {
         const params: MessageInterFace[] = JSON.parse(JSON.stringify(messages))
         params.push({
@@ -70,28 +84,33 @@ function App() {
             });
     };
 
-    const openToast = (message: string) => {
-        setErrorMessage(message)
-        snackbarsRef.current?.handleOpen();
-    }
+    // 接收输入框传递的值
     const handleValueFromChild = (value: string) => {
         fetchData(value);
     };
 
+    //接收弹窗的api
     const handleKeyChange = (value: string) => {
         setApiKey(value)
     }
 
     return (
         <div className="wrap flex-column">
+            {/*显示对话的子组件*/}
             <ContentComponent
                 messages={messages}/>
+
+            {/*输入框*/}
             <InputComponent
                 ref={childRef}
                 onValueChange={handleValueFromChild}
                 isSending={isSending}/>
+
+            {/*输入api弹窗*/}
             <DialogComponent
                 onKeyChange={handleKeyChange}/>
+
+            {/*错误提示组件*/}
             <CustomizedSnackbars
                 ref={snackbarsRef}
                 errorMessage={errorMessage}/>

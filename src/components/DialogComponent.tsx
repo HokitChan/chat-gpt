@@ -1,14 +1,14 @@
-import {useState, Fragment} from 'react';
+import {useState, Fragment, FormEvent} from 'react';
 import {Button, TextField, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle} from '@mui/material';
-import React from "react";
 
 interface Props {
     onKeyChange: (value: string) => void,
 }
 
 export default function DialogComponent({onKeyChange}: Props) {
+    // 弹窗状态
     const [open, setOpen] = useState(true);
-
+    // 弹窗关闭事件
     const handleClose = () => {
         setOpen(false);
     };
@@ -20,7 +20,7 @@ export default function DialogComponent({onKeyChange}: Props) {
                 onClose={handleClose}
                 PaperProps={{
                     component: 'form',
-                    onSubmit: (event: React.FormEvent<HTMLFormElement>) => {
+                    onSubmit: (event: FormEvent<HTMLFormElement>) => {
                         event.preventDefault();
                         const formData = new FormData(event.currentTarget);
                         const formJson = Object.fromEntries((formData as any).entries());
