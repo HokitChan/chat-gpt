@@ -1,13 +1,12 @@
 import * as React from "react";
-import Snackbar from "@mui/material/Snackbar";
-import Alert from "@mui/material/Alert";
 import {forwardRef, useImperativeHandle, useState} from "react";
+import {Snackbar, Alert} from "@mui/material";
 
 interface Props {
     errorMessage: string
 }
 
-const CustomizedSnackbars = forwardRef(({errorMessage}:Props, ref) => {
+const CustomizedSnackbars = forwardRef(({errorMessage}: Props, ref) => {
     const [open, setOpen] = useState(false);
 
     const handleClick = () => {

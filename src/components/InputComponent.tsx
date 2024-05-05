@@ -1,7 +1,5 @@
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import {Button} from "@mui/material";
 import {useState, forwardRef, useImperativeHandle, ChangeEvent, KeyboardEvent} from 'react';
+import {Button, TextField, Box} from "@mui/material";
 
 interface Props {
     onValueChange: (value: string) => void,
@@ -48,7 +46,7 @@ const InputComponent = forwardRef(({onValueChange, isSending}: Props, ref) => {
                     sx={textFieldStyles}
                 />
                 <Button
-                    disabled={value==="" || isSending}
+                    disabled={value === "" || isSending}
                     onClick={handleClick}
                     variant="contained"
                     sx={buttonStyles}

@@ -1,25 +1,20 @@
-import * as React from 'react';
-import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
+import {useState, Fragment} from 'react';
+import {Button, TextField, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle} from '@mui/material';
+import React from "react";
 
 interface Props {
     onKeyChange: (value: string) => void,
 }
 
 export default function DialogComponent({onKeyChange}: Props) {
-    const [open, setOpen] = React.useState(true);
+    const [open, setOpen] = useState(true);
 
     const handleClose = () => {
         setOpen(false);
     };
 
     return (
-        <React.Fragment>
+        <Fragment>
             <Dialog
                 open={open}
                 onClose={handleClose}
@@ -57,6 +52,6 @@ export default function DialogComponent({onKeyChange}: Props) {
                     <Button type="submit">确认</Button>
                 </DialogActions>
             </Dialog>
-        </React.Fragment>
+        </Fragment>
     );
 }

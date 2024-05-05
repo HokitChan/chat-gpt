@@ -5,7 +5,6 @@ import {MessageInterFace} from "./types/data"
 import ContentComponent from "./components/ContentComponent"
 import DialogComponent from "./components/DialogComponent";
 import CustomizedSnackbars from "./components/CustomizedSnackbars"
-import * as React from 'react';
 
 function App() {
     const defaultKey = "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"
