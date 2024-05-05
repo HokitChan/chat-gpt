@@ -1,13 +1,13 @@
 import * as React from "react";
 import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
-import {useEffect, useState} from "react";
+import {forwardRef, useImperativeHandle, useState} from "react";
 
 interface Props {
     errorMessage: string
 }
 
-function CustomizedSnackbars({errorMessage}: Props) {
+const CustomizedSnackbars = forwardRef(({errorMessage}:Props, ref) => {
     const [open, setOpen] = useState(false);
 
     const handleClick = () => {
@@ -18,21 +18,17 @@ function CustomizedSnackbars({errorMessage}: Props) {
         if (reason === 'clickaway') {
             return;
         }
-
         setOpen(false);
     };
-    useEffect(() => {
-        if (errorMessage) {
-            handleClick(); // 接收到新的 errorMessage 时打开 Snackbar
-        }
-    }, [errorMessage]); // 监听 errorMessage 的变化
-
+    useImperativeHandle(ref, () => ({
+        handleOpen: () => handleClick(),
+    }));
     return (
         <div>
             <Snackbar anchorOrigin={{
                 vertical: 'top',
                 horizontal: 'center',
-            }} open={open} autoHideDuration={6000} onClose={handleClose}>
+            }} open={open} autoHideDuration={4000} onClose={handleClose}>
                 <Alert
                     onClose={handleClose}
                     severity="error"
@@ -44,6 +40,6 @@ function CustomizedSnackbars({errorMessage}: Props) {
             </Snackbar>
         </div>
     );
-}
+})
 
 export default CustomizedSnackbars;

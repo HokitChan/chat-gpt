@@ -5,10 +5,10 @@ import {useState, forwardRef, useImperativeHandle, ChangeEvent, KeyboardEvent} f
 
 interface Props {
     onValueChange: (value: string) => void,
-    isTyping: boolean,
+    isSending: boolean,
 }
 
-const InputComponent = forwardRef(({onValueChange, isTyping}: Props, ref) => {
+const InputComponent = forwardRef(({onValueChange, isSending}: Props, ref) => {
 
     const [value, setValue] = useState<string>('');
 
@@ -41,19 +41,19 @@ const InputComponent = forwardRef(({onValueChange, isTyping}: Props, ref) => {
                     fullWidth
                     placeholder="Message ChatGPT…"
                     id="fullWidth"
-                    disabled={isTyping}
+                    disabled={isSending}
                     value={value}
                     onChange={handleInput}
                     onKeyDown={handleKeyDown}
                     sx={textFieldStyles}
                 />
                 <Button
-                    disabled={value==="" || isTyping}
+                    disabled={value==="" || isSending}
                     onClick={handleClick}
                     variant="contained"
                     sx={buttonStyles}
                 >
-                    {isTyping ? (
+                    {isSending ? (
                         <svg stroke="white" fill="none" viewBox="0 0 24 24"
                              className="animate-spin text-center" height="16" width="16"
                              xmlns="http://www.w3.org/2000/svg">
