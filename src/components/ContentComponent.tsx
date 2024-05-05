@@ -6,7 +6,7 @@ interface Props {
 }
 
 function ContentComponent({messages}: Props) {
-    if (!messages || messages.length === 0) {
+    if (!messages?.length) {
         return (<div className="display-flex client-height flex-column">
             <div className="avatar-wrap wh48 wh32-svg display-flex">
                 <svg viewBox="0 0 41 41" fill="none"
@@ -20,6 +20,7 @@ function ContentComponent({messages}: Props) {
             <div className="help">How can I help you today?</div>
         </div>);
     }
+
     const list = messages.map((item: MessageInterFace) => (
         <div key={item.id} className="item">
             {item.role === "user" ? (<div className="avatar">

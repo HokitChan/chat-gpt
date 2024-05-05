@@ -46,7 +46,7 @@ const InputComponent = forwardRef(({onValueChange, isSending}: Props, ref) => {
                     sx={textFieldStyles}
                 />
                 <Button
-                    disabled={value === "" || isSending}
+                    disabled={!value || isSending}
                     onClick={handleClick}
                     variant="contained"
                     sx={buttonStyles}
