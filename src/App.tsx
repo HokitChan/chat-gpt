@@ -17,9 +17,7 @@ function App() {
     const snackbarsRef = useRef<any>(null);
     const clearChildData = () => {
         // 调用子组件暴露的 clearValue 方法
-        if (childRef.current) {
-            childRef.current.clearValue();
-        }
+        childRef.current?.clearValue();
     };
     const fetchData = (value: string) => {
         const params: MessageInterFace[] = JSON.parse(JSON.stringify(messages))
@@ -74,10 +72,8 @@ function App() {
     };
 
     const openToast = (message: string) => {
-        if (snackbarsRef.current) {
-            setErrorMessage(message)
-            snackbarsRef.current.handleOpen();
-        }
+        setErrorMessage(message)
+        snackbarsRef.current?.handleOpen();
     }
     const handleValueFromChild = (value: string) => {
         fetchData(value);
