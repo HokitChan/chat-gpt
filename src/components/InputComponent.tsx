@@ -4,9 +4,10 @@ import {Button, TextField, Box} from "@mui/material";
 interface Props {
     onValueChange: (value: string) => void,
     isSending: boolean,
+    parentWidth: number,
 }
 
-const InputComponent = forwardRef(({onValueChange, isSending}: Props, ref) => {
+const InputComponent = forwardRef(({onValueChange, isSending, parentWidth}: Props, ref) => {
     // 输入框的值
     const [value, setValue] = useState<string>('');
 
@@ -37,7 +38,7 @@ const InputComponent = forwardRef(({onValueChange, isSending}: Props, ref) => {
         }
     }
     return (
-        <div className="bottom-bar">
+        <div className="bottom-bar" style={{width: parentWidth + 'px'}}>
             <Box>
                 <TextField
                     fullWidth
