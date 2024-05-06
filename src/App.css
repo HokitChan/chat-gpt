@@ -13,7 +13,7 @@ html {
 }
 
 .client-height {
-    height: calc(100vh - 134px);
+    min-height: calc(100vh - 134px);
 }
 
 .wh48 {
@@ -58,6 +58,8 @@ html {
     max-width: 766px;
     padding: 24px;
     font-size: 16px;
+    height: inherit;
+    margin-bottom: 100px;
 
     .item {
         padding: 16px 0;
@@ -73,6 +75,11 @@ html {
             word-wrap: break-word; /* 允许在长单词或URL内部换行 */
             word-break: break-all; /* 允许在任意字符间换行，适用于某些亚洲语言 */
         }
+    }
+    .item:last-child::after {
+        content: '';
+        display: block;
+        height: 122px;
     }
 }
 
@@ -100,7 +107,6 @@ html {
     padding-bottom: 34px;
     background-color: white;
     max-width: 766px;
-    width: 100%;
 }
 
 .text-white {

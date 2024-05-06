@@ -1,4 +1,4 @@
-import {useState, useRef,useEffect} from 'react';
+import {useState, useRef, useEffect} from 'react';
 import './App.css';
 import InputComponent from "./components/InputComponent";
 import {MessageInterFace} from "./types/data"
@@ -6,6 +6,7 @@ import ContentComponent from "./components/ContentComponent"
 import DialogComponent from "./components/DialogComponent";
 import CustomizedSnackbars from "./components/CustomizedSnackbars"
 import Grid from '@mui/material/Grid';
+
 function App() {
     // 默认的apiKey
     const defaultKey = "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"
@@ -57,11 +58,6 @@ function App() {
             })
         })
             .then(response => {
-                console.log(response);
-                if (!response.ok) {
-                    openToast("请求失败")
-                    throw new Error('请求失败');
-                }
                 return response.json();
             })
             .then(data => {
@@ -71,8 +67,9 @@ function App() {
                     params.push({...data.choices[0].message, id: data.id})
                     setMessages(params)
                 } else {
-                    console.error(JSON.parse(data.error.message));
-                    openToast(JSON.parse(data.error.message).error.message)
+                    const err = data?.error?.message
+                    console.error(err)
+                    openToast(err)
                 }
             })
             .catch(error => {
