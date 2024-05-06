@@ -9,7 +9,7 @@ import Grid from '@mui/material/Grid';
 
 function App() {
     // 默认的apiKey
-    const defaultKey = "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"
+    const defaultKey = "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"
     // 是否正在发送请求
     const [isSending, setSending] = useState<boolean>(false);
     // apiKey
